@@ -1,4 +1,8 @@
 product: jvm/app
 
+settings:
+  jvm:
+    mainClass: Day01Kt
+
 dependencies:
   - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0
