@@ -1,20 +1,34 @@
+import kotlin.math.absoluteValue
+
 fun main() {
+    fun extractLists(input: List<String>) = input.asSequence()
+        .filter { it.isNotEmpty() }
+        .map { it.split("   ") }
+        .map { it[0].toInt() to it[1].toInt() }
+        .fold(mutableListOf<Int>() to mutableListOf<Int>()) { (acc1, acc2), (a, b) ->
+            acc1.add(a)
+            acc2.add(b)
+            acc1 to acc2
+        }
+
     fun part1(input: List<String>): Int {
-        return input.size
+        val (listA, listB) = extractLists(input)
+
+        return listA.sorted().zip(listB.sorted()).sumOf { (x, y) -> (x - y).absoluteValue }
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        val (listA, listB) = extractLists(input)
+
+        val tally = listB.groupingBy { it }.eachCount()
+
+        return listA.sumOf { a -> a * (tally[a] ?: 0) }
     }
 
-    // Test if implementation meets criteria from the description, like:
-    check(part1(listOf("test_input")) == 1)
-
-    // Or read a large test input from the `src/Day01_test.txt` file:
     val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    check(part1(testInput) == 11)
+    check(part2(testInput) == 31)
 
-    // Read the input from the `src/Day01.txt` file.
     val input = readInput("Day01")
     part1(input).println()
     part2(input).println()
