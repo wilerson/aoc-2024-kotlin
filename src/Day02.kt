@@ -1,6 +1,6 @@
 import kotlin.math.absoluteValue
 
-fun main() {
+fun day02() {
     fun extractLists(input: List<String>) = input.asSequence()
         .filter { it.isNotEmpty() }
         .map { it.split(' ') }

@@ -1,5 +1,5 @@
 
-fun main() {
+fun day03() {
 
     val regex = """mul\(\d{1,3}?,\d{1,3}?\)""".toRegex()
     val regex2 = """(mul\(\d{1,3}?,\d{1,3}?\))|(do\(\))|(don't\(\))""".toRegex()
