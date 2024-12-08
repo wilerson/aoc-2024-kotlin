@@ -7,6 +7,7 @@ val days = listOf(
     ::day05,
     ::day06,
     ::day07,
+    ::day08,
 )
 
 fun main(args: Array<String>) {
